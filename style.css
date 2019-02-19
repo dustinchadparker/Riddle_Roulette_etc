@@ -1,0 +1,75 @@
+body {
+  background-color: black;
+  color: white;
+  overflow: auto;
+  box-shadow: 0 0 100px gray inset;
+ 
+}
+
+.green-font {
+  color: green;
+  text-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px darkred;
+}
+
+.red-font {
+  color: red;
+  text-shadow: 1px 1px 2px black, 0 0 25px green, 0 0 5px rgb(127, 255, 127);
+}
+.card {
+  padding: 10px;
+  z-index: -1;
+  background-color: black;
+}
+
+.form-control {
+  width: 1px;
+}
+.prisoner-title {
+  text-shadow: 1px 1px 2px black, 0 0 25px yellow, 0 0 5px darkgoldenrod;
+  text-align: center;
+}
+.prisoner-text {
+  padding-left: 10px;
+  text-shadow: 1px 1px 2px black, 0 0 5px yellow, 0 0 5px darkgoldenrod;
+}
+
+.popover-header {
+  text-align: center;
+  color: black;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(255, 255, 255),
+    rgb(185, 185, 185)
+  );
+}
+
+.image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 219px;
+  height: 213px;
+}
+.popover-body {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(37, 3, 3),
+    rgb(0, 0, 0)
+  );
+  color: white;
+}
+
+#basic-addon1 {
+  font-weight: bold;
+}
+
+
+.lottery-title {
+    text-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 50px darkred;
+    text-align: center;
+  }
+
+  .lottery-text {
+
+    text-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 50px darkred;
+  }

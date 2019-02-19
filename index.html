@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Personal Stuffs</title>
+  </head>
+  <body>
+    <div class="card" style="width: 90%">
+      <img class="image" src="./images/prisoner.png" alt="Image" />
+      <div class="prisoner-body">
+        <h5 class="prisoner-title">100 Prisoners and a Lightbulb</h5>
+        <p class="prisoner-text">
+          One hundred prisoners are sentenced to life in prison in solitary
+          confinement. Upon arrival at the prison, the warden proposes a deal to
+          keep them entertained, certain that the prisoners are too dim-witted
+          and impatient to accomplish it. The warden has a large bowl containing
+          the cell numbers of all the prisoners. Each day he randomly chooses
+          one cell from the bowl, the corresponding prisoner is taken to the
+          interrogation room, and the cell number is returned to the bowl. While
+          in the interrogation room, the prisoner will not be allowed to touch
+          anything except the light switch, which the prisoner may choose to
+          turn <span class="green-font">on</span> or
+          <span class="red-font">off</span>. The prisoner may make the assertion
+          that all 100 prisoners have been in the room. If the prisoner’s
+          assertion is <span class="green-font">correct</span>, all prisoners
+          will be released. If the prisoner is
+          <span class="red-font">incorrect</span>, they are all executed. The
+          prisoners are given one meeting to discuss a strategy before their
+          communication is completely severed. What strategy should they adopt
+          in order to ensure, with
+          <span class="green-font">100%</span> certainty, that one of them will
+          guess correctly and all be freed? The initial state of the light is
+          OFF when the first prisoner enters the room.
+        </p>
+        <button
+          type="button"
+          id="prisoner-solution"
+          class="btn btn-lg btn-danger"
+          data-toggle="popover"
+          title="Solution"
+          data-content=""
+        >
+          Click to reveal solution:
+        </button>
+
+        <div class="input-group input-group-sm mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm"
+              >How many times would you like to run this solution?</span
+            >
+          </div>
+          <input
+            type="number"
+            class="form-control"
+            aria-label="small"
+            id="prisoner-runs"
+            aria-describedby="inputGroup-sizing-sm"
+          />
+          <button type="button" id="prisoner-button" class="btn btn-primary">
+            Calculate
+          </button>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              >Quickest Escape:</span
+            >
+          </div>
+          <input
+            type="text"
+            disabled="disabled"
+            id="quickest-escape"
+            class="form-control"
+            placeholder=""
+            aria-describedby="basic-addon1"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              >Longest Escape:</span
+            >
+          </div>
+          <input
+            type="text"
+            disabled="disabled"
+            id="longest-escape"
+            class="form-control"
+            placeholder=""
+            aria-describedby="basic-addon1"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              >Average Escape:</span
+            >
+          </div>
+          <input
+            type="text"
+            disabled="disabled"
+            id="average-escape"
+            class="form-control"
+            placeholder=""
+            aria-describedby="basic-addon1"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="width: 90%">
+      <img
+        class="image card-img-top"
+        src="./images/lottery.jpg"
+        alt="Lottery"
+      />
+      <div class="card-body">
+        <h5 class="lottery-title">The Lottery (Powerball)</h5>
+        <p class="lottery-text">
+          The chances in winning the powerball are 1 in 290+ million. Do you
+          think the odds are better if you buy many at once, or play
+          every-so-often? Well, here you get the chance! This draws from a pool
+          of 6 numbers, the first five which go to 69 (no repeating numbers),
+          and the last one that can go to 26.
+        </p>
+
+        <button type="button" id="lottery-button" class="btn btn-primary">
+          Play!
+        </button>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <script src="app.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  </body>
+</html>
