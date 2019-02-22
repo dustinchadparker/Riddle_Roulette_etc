@@ -16,7 +16,18 @@
     <title>Personal Stuffs</title>
   </head>
   <body>
-    <div class="card" style="width: 90%">
+    <nav id="navbar-example2" class="navbar navbar-light bg-light mb-3">
+      <a class="navbar-brand" href="#">Navigation --></a>
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" href="#priso">PrisonerRiddle</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#lotto">Lottery</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="prisoner-card" id="priso" style="width: 100%">
       <img class="image" src="./images/prisoner.png" alt="Image" />
       <div class="prisoner-body">
         <h5 class="prisoner-title">100 Prisoners and a Lightbulb</h5>
@@ -54,7 +65,7 @@
           Click to reveal solution:
         </button>
 
-        <div class="input-group input-group-sm mb-3">
+        <div class="input-group input-group-sm mb-1">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-sm"
               >How many times would you like to run this solution?</span
@@ -72,7 +83,7 @@
           </button>
         </div>
 
-        <div class="input-group mb-3">
+        <div class="input-group mb-0">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1"
               >Quickest Escape:</span
@@ -88,7 +99,7 @@
           />
         </div>
 
-        <div class="input-group mb-3">
+        <div class="input-group mb-0">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1"
               >Longest Escape:</span
@@ -104,7 +115,7 @@
           />
         </div>
 
-        <div class="input-group mb-3">
+        <div class="input-group mb-0">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1"
               >Average Escape:</span
@@ -122,12 +133,13 @@
       </div>
     </div>
 
-    <div class="card" style="width: 90%">
+    <div class="lottery-card mt-3" id="lotto" style="width: 100%">
       <img
         class="image card-img-top"
         src="./images/lottery.jpg"
         alt="Lottery"
       />
+
       <div class="card-body">
         <h5 class="lottery-title">The Lottery (Powerball)</h5>
         <p class="lottery-text">
@@ -138,9 +150,174 @@
           and the last one that can go to 26.
         </p>
 
-        <button type="button" id="lottery-button" class="btn btn-primary">
-          Play!
-        </button>
+        <div class="input-group input-group-sm mb-1">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm"
+              >How many tickets would you like to buy per drawing? ($2 ea)</span
+            >
+          </div>
+          <input
+            type="number"
+            class="form-control"
+            aria-label="small"
+            id="lottery-tickets"
+            aria-describedby="inputGroup-sizing-sm"
+          />
+          <button type="button" id="tickets-button" class="btn btn-primary">
+            Play!
+          </button>
+          <div id="lottery-text-field">THIS WILL PLAY UNTIL YOU WIN!</div>
+          <textarea
+            id="lottery-details"
+            disabled
+            value=""
+            placeholder="( The number of wins will be recorded here - careful of your numbers here! Spoiler: the less tickets you buy, the longer it'll take! )"
+          ></textarea>
+
+          <div class="input-group mb-0">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"
+                >Jackpot(s) = GrandPrize =:</span
+              >
+            </div>
+            <input
+              type="text"
+              disabled="disabled"
+              id="lottery-jackpot-count"
+              class="form-control"
+              placeholder=""
+              aria-describedby="basic-addon1"
+            />
+          </div>
+
+          <div class="input-group mb-0">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"
+                >5 numbers = $1 Million =:</span
+              >
+            </div>
+            <input
+              type="text"
+              disabled="disabled"
+              id="lottery-5-count"
+              class="form-control"
+              placeholder=""
+              aria-describedby="basic-addon1"
+            />
+          </div>
+
+          <div class="input-group mb-0">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"
+                >4* numbers = $50,000 =:</span
+              >
+            </div>
+            <input
+              type="text"
+              disabled="disabled"
+              id="lottery-4p-count"
+              class="form-control"
+              placeholder=""
+              aria-describedby="basic-addon1"
+            />
+          </div>
+
+          <div class="input-group mb-0">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"
+                >4 numbers = $100 =:</span
+              >
+            </div>
+            <input
+              type="text"
+              disabled="disabled"
+              id="lottery-4-count"
+              class="form-control"
+              placeholder=""
+              aria-describedby="basic-addon1"
+            />
+          </div>
+
+          <div class="input-group mb-0">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"
+                >3* numbers = $100 =:</span
+              >
+            </div>
+            <input
+              type="text"
+              disabled="disabled"
+              id="lottery-3p-count"
+              class="form-control"
+              placeholder=""
+              aria-describedby="basic-addon1"
+            />
+          </div>
+
+          <div class="input-group mb-0">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"
+                >3 numbers = $7 =:</span
+              >
+            </div>
+            <input
+              type="text"
+              disabled="disabled"
+              id="lottery-3-count"
+              class="form-control"
+              placeholder=""
+              aria-describedby="basic-addon1"
+            />
+          </div>
+
+          <div class="input-group mb-0">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"
+                >2* numbers = $7 =:</span
+              >
+            </div>
+            <input
+              type="text"
+              disabled="disabled"
+              id="lottery-2p-count"
+              class="form-control"
+              placeholder=""
+              aria-describedby="basic-addon1"
+            />
+          </div>
+
+          <div class="input-group mb-0">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"
+                >1* number = $4 =:</span
+              >
+            </div>
+            <input
+              type="text"
+              disabled="disabled"
+              id="lottery-1p-count"
+              class="form-control"
+              placeholder=""
+              aria-describedby="basic-addon1"
+            />
+          </div>
+
+          <div class="input-group mb-0">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"
+                >Powerball = $4 =:</span
+              >
+            </div>
+            <input
+              type="text"
+              disabled="disabled"
+              id="lottery-p-count"
+              class="form-control"
+              placeholder=""
+              aria-describedby="basic-addon1"
+            />
+          </div>
+        </div>
       </div>
     </div>
 
