@@ -24,6 +24,12 @@ body {
   text-shadow: 1px 1px 2px black, 0 0 25px yellow, 0 0 5px darkgoldenrod;
   text-align: center;
 }
+#light {
+  animation-name: yellowsAndWhites;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  text-shadow: 1px 1px 2px black, 0 0 25px yellow, 0 0 5px darkgoldenrod;
+}
 .prisoner-text {
   padding-left: 10px;
   text-shadow: 1px 1px 2px black, 0 0 5px yellow, 0 0 5px darkgoldenrod;
@@ -45,13 +51,7 @@ body {
   margin-right: auto;
   width: 219px;
   height: 213px;
-  box-shadow: 4px 10px 50px rgb(255, 255, 255);
   border-radius: 5%;
-}
-
-.abs {
-  height: 213px;
-  width: 90%;
 }
 
 .popover-body {
@@ -105,12 +105,112 @@ body {
 .navbar {
   position: fixed;
   width: 100%;
-  z-index: 100;
+  z-index: 9;
   justify-items: space-between;
   top: 0;
   left: 0;
 }
+.mouse {
+  width: 50px;
+  height: 20px;
+  position: fixed;
+  top: 38px;
+  z-index: 10;
+  left: -50px;
+  animation: mouseAnim 20s infinite;
+  animation-timing-function: cubic-bezier(1, 0.1, 0.6, 0.1);
+}
+
+@keyframes mouseAnim {
+  1% {
+    left: -40px;
+  }
+  100% {
+    left: 111%;
+  }
+}
 
 .prisoner-card {
   margin-top: 55px;
+}
+
+@keyframes yellowsAndWhites {
+  59% {
+    border-radius: 100%;
+    text-shadow: 2px 2px 10px rgb(5, 5, 5);
+  }
+  60% {
+    text-shadow: 2px 2px 5px rgb(251, 255, 0);
+  }
+  61% {
+    text-shadow: 2px 2px 10px rgb(5, 5, 5);
+  }
+
+  99% {
+    text-shadow: 2px 2px 5px rgb(5, 5, 5);
+  }
+  100% {
+    border-radius: 10px;
+    text-shadow: 2px 2px 10px rgb(251, 255, 0);
+  }
+
+  5% {
+    text-shadow: 2px 2px 5px rgb(5, 5, 5);
+  }
+  6% {
+    text-shadow: 2px 2px 10px rgb(251, 255, 0);
+  }
+  7% {
+    text-shadow: 2px 2px 5px rgb(5, 5, 5);
+  }
+  9% {
+    text-shadow: 2px 2px 10px rgb(251, 255, 0);
+  }
+  10% {
+    text-shadow: 2px 2px 5px rgb(5, 5, 5);
+  }
+
+  22% {
+    text-shadow: 2px 2px 10px rgb(5, 5, 5);
+  }
+  23% {
+    text-shadow: 2px 2px 5px rgb(251, 255, 0);
+  }
+  24% {
+    text-shadow: 2px 2px 5px rgb(5, 5, 5);
+  }
+}
+
+@keyframes multicolor {
+  0% {
+    box-shadow: 50px 100px 100px rgb(255, 255, 255);
+  }
+  25% {
+    box-shadow: -50px 100px 50px rgb(255, 1, 1);
+  }
+  50% {
+    box-shadow: -50px -100px 100px rgb(0, 139, 194);
+  }
+  75% {
+    box-shadow: 50px -100px 50px rgb(211, 248, 0);
+  }
+  100% {
+    box-shadow: 50px 100px 100px rgb(41, 248, 0);
+  }
+}
+
+.priso-image {
+  position: relative;
+  animation-name: yellowsAndWhites;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  z-index: -1;
+}
+
+.lotto-image {
+  position: relative;
+  animation-name: multicolor;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  z-index: -1;
 }

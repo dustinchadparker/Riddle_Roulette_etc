@@ -208,3 +208,10 @@ $("#tickets-button").click(function() {
       " (not including the grand prize)"
   );
 });
+
+//mouse disappears slowly on click
+let mouseDis = 1.0;
+$('.mouse').click(function () {
+    mouseDis = mouseDis - 0.1;
+    $('.mouse').fadeTo("fast", mouseDis);
+})
