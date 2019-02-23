@@ -97,8 +97,9 @@ $("#prisoner-button").click(function() {
 });
 
 $(function() {
-  $(".btn-danger").popover({
+  $("#prisoner-solution").popover({
     container: "body",
+    offset: -100,
     content:
       "At the beginning, the prisoners select a leader. Whenever a person (with the exception of the leader) comes into a room, he turns the lights on (but he does this only once). If the lights are already on, he does nothing. When the leader goes into the room, he turns off the lights. When he will have turned off the lights 99 times, he is 100% sure that everyone has been in the room."
   });
@@ -211,7 +212,72 @@ $("#tickets-button").click(function() {
 
 //mouse disappears slowly on click
 let mouseDis = 1.0;
-$('.mouse').click(function () {
-    mouseDis = mouseDis - 0.1;
-    $('.mouse').fadeTo("fast", mouseDis);
-})
+$(".mouse").click(function() {
+  mouseDis = mouseDis - 0.1;
+  $(".mouse").fadeTo("fast", mouseDis);
+});
+
+//MONTY STUFF
+
+$(function() {
+  $("#monty-solution").popover({
+    container: "body",
+    offset: -100,
+    content:
+      "A lot of people have trouble with the better odds of switching doors. Myself included, until I realized a simple fact: the odds are better if you switch because Monty curates the remaining choices. Let’s say you played the game where Monty doesn’t know the location of the car. It wouldn’t make any difference if you switch or not (your odds would be 50% no matter what). But this isn’t what happens. The Monty Hall problem has a very specific clause: Monty knows where the car is. He never chooses the door with the car. And by curating the remaining doors for you, he raises the odds that switching is always a good bet. Another of the reasons some people can’t wrap their head around the Monty Hall problem is the small numbers. Let’s look at the exact same problem with 100 doors instead of 3. You pick a random door. Instead of one door, Monty eliminates 98 doors.These are doors that he knows do not have the prize! This leaves two doors. The one you picked, and one that was left after Monty eliminated the others. Monty Hall Problem: Solution Explained Simply Contents (Click to skip to that section): What is the Monty Hall Problem? A More Intuitive Way to Look at the Monty Hall Problem Why Does Switching Work? 1975 Version of The Monty Hall Problem The Media Furor Using Bayes’ Theorem to Solve the Monty Hall Problem What is the Monty Hall Problem? The Monty Hall problem is a probability puzzle named after Monty Hall, the original host of the TV show Let’s Make a Deal. It’s a famous paradox that has a solution that is so absurd, most people refuse to believe it’s true. monty hall problem Suppose you’re on a game show, and you’re given the choice of three doors: Behind one door is a car; behind the others, goats. You pick a door, say No. 1, and the host, who knows what’s behind the doors, opens another door, say No. 3, which has a goat. He then says to you, “Do you want to pick door No. 2?” Is it to your advantage to switch your choice? ~ (From Parade magazine’s Ask Marilyn column) Should you Switch? Believe it or not, it’s actually to your benefit to switch: If you switch, you have roughly a 2/3 chance of winning the car. If you stick to your original choice you have roughly a 1/3 chance of winning the car. The answer sounds unlikely. After door 3 is opened, you would think that you then have two doors to choose from…both with the same odds. However, you are actually much more likely to win if you switch. Those who switched doors won about 2/3 of the time Those who didn’t switch won about 1/3 of the time This fact has been proved over and over again with a plethora of mathematical simulations. If you’re stumped and still don’t believe it — don’t worry, even mathematicians scratch their head on this one. One genius mathematician, Paul Erdős didn’t believe the answer was right until he was shown simulations of the winning, “switch”, strategy. Back to Top A More Intuitive Way to Look at the Monty Hall Problem A lot of people have trouble with the better odds of switching doors. Myself included, until I realized a simple fact: the odds are better if you switch because Monty curates the remaining choices. Let’s say you played the game where Monty doesn’t know the location of the car. It wouldn’t make any difference if you switch or not (your odds would be 50% no matter what). But this isn’t what happens. The Monty Hall problem has a very specific clause: Monty knows where the car is. He never chooses the door with the car. And by curating the remaining doors for you, he raises the odds that switching is always a good bet. Another of the reasons some people can’t wrap their head around the Monty Hall problem is the small numbers. Let’s look at the exact same problem with 100 doors instead of 3. You pick a random door. monty hall problem 100 doors Instead of one door, Monty eliminates 98 doors.These are doors that he knows do not have the prize! This leaves two doors. The one you picked, and one that was left after Monty eliminated the others. monty hall problem 100 doors 2 Do you switch doors now? You should. When you first picked, you only had a 1/100 chance of getting the right door. Furthermore, it was sheer guesswork. Now you’re being presented with a filtered choice, curated by Monty Hall himself. It should be clear that now your odds are much better if you switch."
+  });
+});
+
+//MONTY HALL STARTS HERE
+$("#monty-button").click(function() {
+  let gamesWon = 0;
+
+  let totalGames = $("#goat-games-count").val();
+  for (let games = 0; games < totalGames; games++) {
+    let goatCount = $("#goat-count").val();
+    let arrayOfDoors = [];
+
+    goatCount = parseFloat(goatCount);
+    totalGames = parseFloat(totalGames);
+
+    if (goatCount && totalGames) {
+    } else {
+      alert("Must specify a valid number.");
+    }
+    let randomDoor = Math.floor(Math.random() * (goatCount + 1));
+
+    for (let i = 0; i < goatCount + 1; i++) {
+      //adds a 1 (goat) to the array for every goat
+      arrayOfDoors.push(1);
+    }
+    //adds a car to the array
+    randomDoor = Math.floor(Math.random() * (goatCount + 1));
+    arrayOfDoors[randomDoor] = 0;
+
+    //picks a door for you (your chosen door)
+
+    randomDoor = Math.floor(Math.random() * (goatCount + 1));
+    let chosenDoor = randomDoor;
+
+    //host removes the rest of the goats in array
+    while (arrayOfDoors.length > 2) {
+      randomDoor = Math.floor(Math.random() * (goatCount + 1));
+
+      if (arrayOfDoors[randomDoor] == 1 && randomDoor != chosenDoor) {
+        arrayOfDoors.splice(randomDoor, 1);
+        goatCount--;
+        if (randomDoor < chosenDoor) {
+          chosenDoor--;
+        }
+      }
+    }
+
+    //if the door you chose was a winner then you lose
+    //(because you are supposed to switch)
+    if (arrayOfDoors[chosenDoor] == 1) {
+      gamesWon++;
+    }
+  }
+
+  $("#goat-result-count").val((gamesWon / totalGames) * 100 + "%");
+});

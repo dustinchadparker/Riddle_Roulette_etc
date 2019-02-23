@@ -16,7 +16,7 @@
     <title>Personal Stuffs</title>
   </head>
   <body>
-      <img class="mouse" src="./images/mouse.gif">
+    <img class="mouse" src="./images/mouse.gif" />
     <nav id="navbar-example2" class="navbar navbar-light bg-light mb-3">
       <a class="navbar-brand" href="#">Navigation --></a>
       <ul class="nav nav-pills">
@@ -26,24 +26,33 @@
         <li class="nav-item">
           <a class="nav-link" href="#lotto">Lottery</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#monty">Monty Hall</a>
+        </li>
       </ul>
     </nav>
     <div class="prisoner-card" id="priso" style="width: 100%">
       <img class="image priso-image" src="./images/prisoner.png" alt="Image" />
       <div class="prisoner-body">
-        <h5 class="prisoner-title">100 Prisoners and a <span id="light">Lightbulb<span></span></h5>
+        <h5 class="prisoner-title">
+          100 Prisoners and a <span id="light">Lightbulb</span>
+        </h5>
         <p class="prisoner-text">
-          One hundred prisoners are sentenced to life in prison in solitary
-          confinement. Upon arrival at the prison, the warden proposes a deal to
-          keep them entertained, certain that the prisoners are too dim-witted
-          and impatient to accomplish it. The warden has a large bowl containing
-          the cell numbers of all the prisoners. Each day he randomly chooses
-          one cell from the bowl, the corresponding prisoner is taken to the
-          interrogation room, and the cell number is returned to the bowl. While
-          in the interrogation room, the prisoner will not be allowed to touch
-          anything except the light switch, which the prisoner may choose to
-          turn <span class="green-font">on</span> or
-          <span class="red-font">off</span>. The prisoner may make the assertion
+          <span class="begin-par">One</span> hundred prisoners are sentenced to
+          life in prison in solitary confinement. Upon arrival at the prison,
+          the warden proposes a deal to keep them entertained, certain that the
+          prisoners are too dim-witted and impatient to accomplish it. The
+          warden has a large bowl containing the cell numbers of all the
+          prisoners. Each day he randomly chooses one cell from the bowl, the
+          corresponding prisoner is taken to the interrogation room, and the
+          cell number is returned to the bowl. While in the interrogation room,
+          the prisoner will not be allowed to touch anything except the light
+          switch, which the prisoner may choose to turn
+          <span class="green-font">on</span> or
+          <span class="red-font">off</span>.
+        </p>
+        <p class="prisoner-text">
+          <span class="begin-par">The</span> prisoner may make the assertion
           that all 100 prisoners have been in the room. If the prisoner’s
           assertion is <span class="green-font">correct</span>, all prisoners
           will be released. If the prisoner is
@@ -144,11 +153,11 @@
       <div class="card-body">
         <h5 class="lottery-title">The Lottery (Powerball)</h5>
         <p class="lottery-text">
-          The chances in winning the powerball are 1 in 290+ million. Do you
-          think the odds are better if you buy many at once, or play
-          every-so-often? Well, here you get the chance! This draws from a pool
-          of 6 numbers, the first five which go to 69 (no repeating numbers),
-          and the last one that can go to 26.
+          <span class="begin-par">The</span> chances in winning the powerball
+          are 1 in 290+ million. Do you think the odds are better if you buy
+          many at once, or play every-so-often? Well, here you get the chance!
+          This draws from a pool of 6 numbers, the first five which go to 69 (no
+          repeating numbers), and the last one that can go to 26.
         </p>
 
         <div class="input-group input-group-sm mb-1">
@@ -313,6 +322,103 @@
               type="text"
               disabled="disabled"
               id="lottery-p-count"
+              class="form-control"
+              placeholder=""
+              aria-describedby="basic-addon1"
+            />
+          </div>
+        </div>
+
+        <div class="monty-card mt-3" style="width: 100%">
+          <img
+            class="image monty-image card-img-top"
+            src="./images/goat.gif"
+            alt="MontyI"
+          />
+          <h5 id="monty" class="lottery-title">The Monty Hall Problem</h5>
+          <p class="lottery-text">
+            <span class="begin-par">The</span> Monty Hall Problem gets its name
+            from the TV game show, Let's Make A Deal, hosted by Monty Hall 1.
+            The scenario is such: you are given the opportunity to select one
+            closed door of three, behind one of which there is a prize. The
+            other two doors hide “goats” (or some other such “non-prize”), or
+            nothing at all. Once you have made your selection, Monty Hall will
+            open one of the remaining doors, revealing that it does not contain
+            the prize 2. He then asks you if you would like to switch your
+            selection to the other unopened door, or stay with your original
+            choice. Here is the problem:
+          </p>
+          <p class="monty-boom">Does it matter if you switch???</p>
+          <p class="lottery-text">
+            <span class="begin-par">This</span> problem is quite interesting,
+            because the answer is felt by most people — including mathematicians
+            — to be counter-intuitive. For most, the “solution” is immediately
+            obvious (they believe), and that is the end of it. But it's not.
+            Because most of the time, this “obvious” solution is incorrect. The
+            correct solution is quite counterintuitive. Further, I've found that
+            many persons have difficulty grasping the validity of the correct
+            solution even after several explanations. Thus, this web page.
+            Before I continue, you may wish to attempt to solve this problem by
+            yourself. You've a good chance to do so, because you now know not to
+            trust your instincts in this and that you should consider the
+            problem very carefully. Try it.
+          </p>
+          <button
+            type="button"
+            id="monty-solution"
+            class="btn btn-lg btn-danger"
+            data-toggle="popover"
+            title="Solution"
+            data-content=""
+          >
+            Click to reveal solution:
+          </button>
+
+          <div class="input-group mb-0">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"
+                >How many goats would you like there to be? (There will be one
+                car in this sim)</span
+              >
+            </div>
+            <input
+              type="number"
+              id="goat-count"
+              class="form-control"
+              placeholder=""
+              aria-describedby="basic-addon1"
+            />
+          </div>
+
+          <div class="input-group mb-0">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"
+                >How many times would you like to run this sim? (To get an
+                average):</span
+              >
+            </div>
+            <input
+              type="number"
+              id="goat-games-count"
+              class="form-control"
+              placeholder=""
+              aria-describedby="basic-addon1"
+            />
+            <button type="button" id="monty-button" class="btn btn-primary">
+              Run!
+            </button>
+          </div>
+
+          <div class="input-group mb-0">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"
+                >Percent that switching wins:</span
+              >
+            </div>
+            <input
+              type="text"
+              disabled="disabled"
+              id="goat-result-count"
               class="form-control"
               placeholder=""
               aria-describedby="basic-addon1"
