@@ -1,6 +1,6 @@
 // PRISONER CODE FOR PRISONER RIDDLE
 
-$("#prisoner-button").click(function() {
+$("#prisoner-button").click(function () {
   let prisonerRuns = $("#prisoner-runs").val();
   let longestDays = 0;
   let averageDays = 0;
@@ -11,6 +11,8 @@ $("#prisoner-button").click(function() {
   let leaderChosen = false;
   let prisonersExist = true;
   let lightSwitch = false;
+
+  console.log(36 / 2 * 3 + 4);
 
   while (counter < prisonerRuns) {
     leaderChosen = false;
@@ -84,19 +86,19 @@ $("#prisoner-button").click(function() {
   );
   $("#longest-escape").val(
     Math.floor(longestDays / 365) +
-      " years and " +
-      (longestDays % 365) +
-      " days."
+    " years and " +
+    (longestDays % 365) +
+    " days."
   );
   $("#quickest-escape").val(
     Math.floor(shortestDays / 365) +
-      " years and " +
-      (shortestDays % 365) +
-      " days."
+    " years and " +
+    (shortestDays % 365) +
+    " days."
   );
 });
 
-$(function() {
+$(function () {
   $("#prisoner-solution").popover({
     container: "body",
     offset: -100,
@@ -123,7 +125,7 @@ ticketCreation = () => {
   return ticketArray;
 };
 
-$("#tickets-button").click(function() {
+$("#tickets-button").click(function () {
   let ticketsPurchasedAtOnce = $("#lottery-tickets").val();
   let winner = false;
   let arrayWinsWithP = [0, 0, 0, 0, 0, 0];
@@ -181,10 +183,10 @@ $("#tickets-button").click(function() {
   $("#lottery-1p-count").val(arrayWinsWithP[0]);
   $("#lottery-p-count").val(
     arrayWinsWithP[5] -
-      arrayWinsWithP[3] -
-      arrayWinsWithP[2] -
-      arrayWinsWithP[1] -
-      arrayWinsWithP[0]
+    arrayWinsWithP[3] -
+    arrayWinsWithP[2] -
+    arrayWinsWithP[1] -
+    arrayWinsWithP[0]
   );
 
   let totalWinnings =
@@ -199,27 +201,27 @@ $("#tickets-button").click(function() {
 
   $("#lottery-details").val(
     "You bought " +
-      totalTicketCounter +
-      " tickets, went through " +
-      winningTicketsGenerated +
-      " different drawings, totalling $" +
-      totalTicketCounter * 2 +
-      " - with a total winnings of $" +
-      totalWinnings +
-      " (not including the grand prize)"
+    totalTicketCounter +
+    " tickets, went through " +
+    winningTicketsGenerated +
+    " different drawings, totalling $" +
+    totalTicketCounter * 2 +
+    " - with a total winnings of $" +
+    totalWinnings +
+    " (not including the grand prize)"
   );
 });
 
 //mouse disappears slowly on click
 let mouseDis = 1.0;
-$(".mouse").click(function() {
+$(".mouse").click(function () {
   mouseDis = mouseDis - 0.1;
   $(".mouse").fadeTo("fast", mouseDis);
 });
 
 //MONTY STUFF
 
-$(function() {
+$(function () {
   $("#monty-solution").popover({
     container: "body",
     offset: -100,
@@ -229,7 +231,7 @@ $(function() {
 });
 
 //MONTY HALL STARTS HERE
-$("#monty-button").click(function() {
+$("#monty-button").click(function () {
   let gamesWon = 0;
 
   let totalGames = $("#goat-games-count").val();
@@ -280,4 +282,94 @@ $("#monty-button").click(function() {
   }
 
   $("#goat-result-count").val((gamesWon / totalGames) * 100 + "%");
+});
+
+//MATT STARTS HERE
+$("#matt-button").click(function () {
+  let numRolls = $("#matt-rolls").val();
+  let minBet = $("#matt-min").val();
+  let maxBet = $("#matt-max").val();
+  let golds = $("#matt-monies").val();
+  let lossBypass = false;
+  let currentRoll = 0;
+  let strat = $(".custom-select").val();
+  let lossGold = 0;
+  let gameOver = false;
+  let bet = parseInt(minBet);
+  let detailBet = 0;
+  let gold = parseInt(golds);
+
+  let details = "Starting at " + gold + "g ---";
+  if (gold == 0) {
+    lossBypass = true;
+  }
+
+
+  while (currentRoll < numRolls && gameOver == false) {
+
+    let rand = Math.floor(Math.random() * 100);
+    rand++;
+
+    detailBet = bet;
+    //LOSE ON 1-61
+    if (rand < 61) {
+
+      //ADD UP LOSS GOLD 
+      lossGold += bet;
+      gold -= bet;
+
+      if (strat == 1) {
+        bet = parseInt(minBet);
+      }
+      else if (strat == 2) {
+        bet = bet * 2;
+      } else if (strat == 3) {
+        bet = lossGold * 2;
+      }
+
+      //Current bet can't be more than max
+      if (bet > maxBet) {
+        bet = maxBet;
+      }
+
+      if (gold <= 0 && lossBypass != true) {
+        //WENT BUST; GAME OVER
+        bet = 0;
+        gameOver = true;
+        details += "\n BUSTED!"
+      }
+    } else if (rand >= 61 && rand <= 94) {
+      gold += bet * 2;
+      bet = parseInt(minBet);
+      lossGold = 0;
+    } else if (rand >= 95 && rand <= 99) {
+      gold += bet * 3;
+      bet = parseInt(minBet);
+      lossGold = 0;
+    } else if (rand == 100) {
+      gold += bet * 4;
+      bet = parseInt(minBet);
+      lossGold = 0;
+    }
+
+
+    details += ("\n Roll " + currentRoll + ": rolled a " + rand + " for " + detailBet + "g, now at " + gold + " gold.");
+    currentRoll++;
+
+  }
+
+  $(function () {
+    $("#matt-solution").popover({
+      container: "body",
+      offset: -100,
+      content:
+        details
+    });
+  });
+
+
+
+  console.log(details);
+  $("#monies-remain").val(gold + " gold.")
+
 });

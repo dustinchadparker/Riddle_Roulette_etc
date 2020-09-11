@@ -1,449 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="style.css" />
 
-    <title>Personal Stuffs</title>
-  </head>
-  <body>
-    <img class="mouse" src="./images/mouse.gif" />
-    <nav id="navbar-example2" class="navbar navbar-light bg-light mb-3">
-      <a class="navbar-brand" href="#">Navigation --></a>
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-          <a class="nav-link" href="#priso">PrisonerRiddle</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#lotto">Lottery</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#monty">Monty Hall</a>
-        </li>
-      </ul>
-    </nav>
-    <div class="prisoner-card" id="priso" style="width: 100%">
-      <img class="image priso-image" src="./images/prisoner.png" alt="Image" />
-      <div class="prisoner-body">
-        <h5 class="prisoner-title">
-          100 Prisoners and a <span id="light">Lightbulb</span>
-        </h5>
-        <p class="prisoner-text">
-          <span class="begin-par">One</span> hundred prisoners are sentenced to
-          life in prison in solitary confinement. Upon arrival at the prison,
-          the warden proposes a deal to keep them entertained, certain that the
-          prisoners are too dim-witted and impatient to accomplish it. The
-          warden has a large bowl containing the cell numbers of all the
-          prisoners. Each day he randomly chooses one cell from the bowl, the
-          corresponding prisoner is taken to the interrogation room, and the
-          cell number is returned to the bowl. While in the interrogation room,
-          the prisoner will not be allowed to touch anything except the light
-          switch, which the prisoner may choose to turn
-          <span class="green-font">on</span> or
-          <span class="red-font">off</span>.
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css" />
+
+  <title>Personal Stuffs</title>
+</head>
+
+<body>
+  <img class="mouse" src="./images/mouse.gif" />
+  <nav id="navbar-example2" class="navbar navbar-light bg-light mb-3">
+    <a class="navbar-brand" href="#">Navigation --></a>
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" href="#priso">PrisonerRiddle</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#lotto">Lottery</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#monty">Monty Hall</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="prisoner-card" id="priso" style="width: 100%">
+    <img class="image priso-image" src="./images/prisoner.png" alt="Image" />
+    <div class="prisoner-body">
+      <h5 class="prisoner-title">
+        100 Prisoners and a <span id="light">Lightbulb</span>
+      </h5>
+      <p class="prisoner-text">
+        <span class="begin-par">One</span> hundred prisoners are sentenced to
+        life in prison in solitary confinement. Upon arrival at the prison,
+        the warden proposes a deal to keep them entertained, certain that the
+        prisoners are too dim-witted and impatient to accomplish it. The
+        warden has a large bowl containing the cell numbers of all the
+        prisoners. Each day he randomly chooses one cell from the bowl, the
+        corresponding prisoner is taken to the interrogation room, and the
+        cell number is returned to the bowl. While in the interrogation room,
+        the prisoner will not be allowed to touch anything except the light
+        switch, which the prisoner may choose to turn
+        <span class="green-font">on</span> or
+        <span class="red-font">off</span>.
+      </p>
+      <p class="prisoner-text">
+        <span class="begin-par">The</span> prisoner may make the assertion
+        that all 100 prisoners have been in the room. If the prisoner’s
+        assertion is <span class="green-font">correct</span>, all prisoners
+        will be released. If the prisoner is
+        <span class="red-font">incorrect</span>, they are all executed. The
+        prisoners are given one meeting to discuss a strategy before their
+        communication is completely severed. What strategy should they adopt
+        in order to ensure, with
+        <span class="green-font">100%</span> certainty, that one of them will
+        guess correctly and all be freed? The initial state of the light is
+        OFF when the first prisoner enters the room.
+      </p>
+      <button type="button" id="prisoner-solution" class="btn btn-lg btn-danger" data-toggle="popover" title="Solution"
+        data-content="">
+        Click to reveal solution:
+      </button>
+
+      <div class="input-group input-group-sm mb-1">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">How many times would you like to run this
+            solution?</span>
+        </div>
+        <input type="number" class="form-control" aria-label="small" id="prisoner-runs"
+          aria-describedby="inputGroup-sizing-sm" />
+        <button type="button" id="prisoner-button" class="btn btn-primary">
+          Calculate
+        </button>
+      </div>
+
+      <div class="input-group mb-0">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Quickest Escape:</span>
+        </div>
+        <input type="text" disabled="disabled" id="quickest-escape" class="form-control" placeholder=""
+          aria-describedby="basic-addon1" />
+      </div>
+
+      <div class="input-group mb-0">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Longest Escape:</span>
+        </div>
+        <input type="text" disabled="disabled" id="longest-escape" class="form-control" placeholder=""
+          aria-describedby="basic-addon1" />
+      </div>
+
+      <div class="input-group mb-0">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Average Escape:</span>
+        </div>
+        <input type="text" disabled="disabled" id="average-escape" class="form-control" placeholder=""
+          aria-describedby="basic-addon1" />
+      </div>
+    </div>
+  </div>
+
+  <div class="lottery-card mt-3" id="lotto" style="width: 100%">
+    <img class="image lotto-image card-img-top" src="./images/lottery.jpg" alt="Lottery" />
+
+    <div class="card-body">
+      <h5 class="lottery-title">The Lottery (Powerball)</h5>
+      <p class="lottery-text">
+        <span class="begin-par">The</span> chances in winning the powerball
+        are 1 in 290+ million. Do you think the odds are better if you buy
+        many at once, or play every-so-often? Well, here you get the chance!
+        This draws from a pool of 6 numbers, the first five which go to 69 (no
+        repeating numbers), and the last one that can go to 26.
+      </p>
+
+      <div class="input-group input-group-sm mb-1">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">How many tickets would you like to buy per drawing?
+            ($2 ea)</span>
+        </div>
+        <input type="number" class="form-control" aria-label="small" id="lottery-tickets"
+          aria-describedby="inputGroup-sizing-sm" />
+        <button type="button" id="tickets-button" class="btn btn-primary">
+          Play!
+        </button>
+        <div id="lottery-text-field">THIS WILL PLAY UNTIL YOU WIN!</div>
+        <textarea id="lottery-details" disabled value=""
+          placeholder="( The number of wins will be recorded here - careful of your numbers here! Spoiler: the less tickets you buy, the longer it'll take! )"></textarea>
+
+        <div class="input-group mb-0">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Jackpot(s) = GrandPrize =:</span>
+          </div>
+          <input type="text" disabled="disabled" id="lottery-jackpot-count" class="form-control" placeholder=""
+            aria-describedby="basic-addon1" />
+        </div>
+
+        <div class="input-group mb-0">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">5 numbers = $1 Million =:</span>
+          </div>
+          <input type="text" disabled="disabled" id="lottery-5-count" class="form-control" placeholder=""
+            aria-describedby="basic-addon1" />
+        </div>
+
+        <div class="input-group mb-0">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">4* numbers = $50,000 =:</span>
+          </div>
+          <input type="text" disabled="disabled" id="lottery-4p-count" class="form-control" placeholder=""
+            aria-describedby="basic-addon1" />
+        </div>
+
+        <div class="input-group mb-0">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">4 numbers = $100 =:</span>
+          </div>
+          <input type="text" disabled="disabled" id="lottery-4-count" class="form-control" placeholder=""
+            aria-describedby="basic-addon1" />
+        </div>
+
+        <div class="input-group mb-0">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">3* numbers = $100 =:</span>
+          </div>
+          <input type="text" disabled="disabled" id="lottery-3p-count" class="form-control" placeholder=""
+            aria-describedby="basic-addon1" />
+        </div>
+
+        <div class="input-group mb-0">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">3 numbers = $7 =:</span>
+          </div>
+          <input type="text" disabled="disabled" id="lottery-3-count" class="form-control" placeholder=""
+            aria-describedby="basic-addon1" />
+        </div>
+
+        <div class="input-group mb-0">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">2* numbers = $7 =:</span>
+          </div>
+          <input type="text" disabled="disabled" id="lottery-2p-count" class="form-control" placeholder=""
+            aria-describedby="basic-addon1" />
+        </div>
+
+        <div class="input-group mb-0">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">1* number = $4 =:</span>
+          </div>
+          <input type="text" disabled="disabled" id="lottery-1p-count" class="form-control" placeholder=""
+            aria-describedby="basic-addon1" />
+        </div>
+
+        <div class="input-group mb-0">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Powerball = $4 =:</span>
+          </div>
+          <input type="text" disabled="disabled" id="lottery-p-count" class="form-control" placeholder=""
+            aria-describedby="basic-addon1" />
+        </div>
+      </div>
+
+      <div class="monty-card mt-3" style="width: 100%">
+        <img class="image monty-image card-img-top" src="./images/goat.gif" alt="MontyI" />
+        <h5 id="monty" class="lottery-title">The Monty Hall Problem</h5>
+        <p class="lottery-text">
+          <span class="begin-par">The</span> Monty Hall Problem gets its name
+          from the TV game show, Let's Make A Deal, hosted by Monty Hall 1.
+          The scenario is such: you are given the opportunity to select one
+          closed door of three, behind one of which there is a prize. The
+          other two doors hide “goats” (or some other such “non-prize”), or
+          nothing at all. Once you have made your selection, Monty Hall will
+          open one of the remaining doors, revealing that it does not contain
+          the prize 2. He then asks you if you would like to switch your
+          selection to the other unopened door, or stay with your original
+          choice. Here is the problem:
         </p>
-        <p class="prisoner-text">
-          <span class="begin-par">The</span> prisoner may make the assertion
-          that all 100 prisoners have been in the room. If the prisoner’s
-          assertion is <span class="green-font">correct</span>, all prisoners
-          will be released. If the prisoner is
-          <span class="red-font">incorrect</span>, they are all executed. The
-          prisoners are given one meeting to discuss a strategy before their
-          communication is completely severed. What strategy should they adopt
-          in order to ensure, with
-          <span class="green-font">100%</span> certainty, that one of them will
-          guess correctly and all be freed? The initial state of the light is
-          OFF when the first prisoner enters the room.
+        <p class="monty-boom">Does it matter if you switch???</p>
+        <p class="lottery-text">
+          <span class="begin-par">This</span> problem is quite interesting,
+          because the answer is felt by most people — including mathematicians
+          — to be counter-intuitive. For most, the “solution” is immediately
+          obvious (they believe), and that is the end of it. But it's not.
+          Because most of the time, this “obvious” solution is incorrect. The
+          correct solution is quite counterintuitive. Further, I've found that
+          many persons have difficulty grasping the validity of the correct
+          solution even after several explanations. Thus, this web page.
+          Before I continue, you may wish to attempt to solve this problem by
+          yourself. You've a good chance to do so, because you now know not to
+          trust your instincts in this and that you should consider the
+          problem very carefully. Try it.
         </p>
-        <button
-          type="button"
-          id="prisoner-solution"
-          class="btn btn-lg btn-danger"
-          data-toggle="popover"
-          title="Solution"
-          data-content=""
-        >
+        <button type="button" id="monty-solution" class="btn btn-lg btn-danger" data-toggle="popover" title="Solution"
+          data-content="">
           Click to reveal solution:
         </button>
 
-        <div class="input-group input-group-sm mb-1">
+        <div class="input-group mb-0">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm"
-              >How many times would you like to run this solution?</span
-            >
+            <span class="input-group-text" id="basic-addon1">How many goats would you like there to be? (There will be
+              one
+              car in this sim)</span>
           </div>
-          <input
-            type="number"
-            class="form-control"
-            aria-label="small"
-            id="prisoner-runs"
-            aria-describedby="inputGroup-sizing-sm"
-          />
-          <button type="button" id="prisoner-button" class="btn btn-primary">
-            Calculate
+          <input type="number" id="goat-count" class="form-control" placeholder="" aria-describedby="basic-addon1" />
+        </div>
+
+        <div class="input-group mb-0">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">How many times would you like to run this sim? (To get an
+              average):</span>
+          </div>
+          <input type="number" id="goat-games-count" class="form-control" placeholder=""
+            aria-describedby="basic-addon1" />
+          <button type="button" id="monty-button" class="btn btn-primary">
+            Run!
           </button>
         </div>
 
         <div class="input-group mb-0">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"
-              >Quickest Escape:</span
-            >
+            <span class="input-group-text" id="basic-addon1">Percent that switching wins:</span>
           </div>
-          <input
-            type="text"
-            disabled="disabled"
-            id="quickest-escape"
-            class="form-control"
-            placeholder=""
-            aria-describedby="basic-addon1"
-          />
-        </div>
-
-        <div class="input-group mb-0">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"
-              >Longest Escape:</span
-            >
-          </div>
-          <input
-            type="text"
-            disabled="disabled"
-            id="longest-escape"
-            class="form-control"
-            placeholder=""
-            aria-describedby="basic-addon1"
-          />
-        </div>
-
-        <div class="input-group mb-0">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"
-              >Average Escape:</span
-            >
-          </div>
-          <input
-            type="text"
-            disabled="disabled"
-            id="average-escape"
-            class="form-control"
-            placeholder=""
-            aria-describedby="basic-addon1"
-          />
+          <input type="text" disabled="disabled" id="goat-result-count" class="form-control" placeholder=""
+            aria-describedby="basic-addon1" />
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="lottery-card mt-3" id="lotto" style="width: 100%">
-      <img
-        class="image lotto-image card-img-top"
-        src="./images/lottery.jpg"
-        alt="Lottery"
-      />
+  <div class="matt-card" id="matt" style="width: 100%">
+    <img class="image2" src="./images/matt.jpg" alt="Image" />
+    <div class="matt-body">
+      <h5 class="matt-title">
+        The Other Lotry
+      </h5>
+      <p class="matt-text">
+        <span class="begin-par">Roll</span> 1-100. 1-60 and you <span class="red-font">lose</span>; 61-94 and you <span
+          class="green-font">win 2x</span>; 95-99 and you <span class="green-font">win 3x</span>; roll 100 and you <span
+          class="green-font">win 4x</span> your bet.
 
-      <div class="card-body">
-        <h5 class="lottery-title">The Lottery (Powerball)</h5>
-        <p class="lottery-text">
-          <span class="begin-par">The</span> chances in winning the powerball
-          are 1 in 290+ million. Do you think the odds are better if you buy
-          many at once, or play every-so-often? Well, here you get the chance!
-          This draws from a pool of 6 numbers, the first five which go to 69 (no
-          repeating numbers), and the last one that can go to 26.
-        </p>
+      </p>
+      <button type="button" id="matt-solution" class="btn btn-lg btn-danger" data-toggle="popover" title="Results:"
+        data-content="">
+        Click to reveal last session's results:
+      </button>
 
-        <div class="input-group input-group-sm mb-1">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm"
-              >How many tickets would you like to buy per drawing? ($2 ea)</span
-            >
-          </div>
-          <input
-            type="number"
-            class="form-control"
-            aria-label="small"
-            id="lottery-tickets"
-            aria-describedby="inputGroup-sizing-sm"
-          />
-          <button type="button" id="tickets-button" class="btn btn-primary">
-            Play!
-          </button>
-          <div id="lottery-text-field">THIS WILL PLAY UNTIL YOU WIN!</div>
-          <textarea
-            id="lottery-details"
-            disabled
-            value=""
-            placeholder="( The number of wins will be recorded here - careful of your numbers here! Spoiler: the less tickets you buy, the longer it'll take! )"
-          ></textarea>
+      <select class="custom-select">
+        <option selected>Choose your betting strategy:</option>
+        <option value="1">Straight bets: I will bet the minimum bet every time.</option>
+        <option value="2">Martingale: Double the previous bet on loss. Bet min otherwise.</option>
+        <option value="3">Doubling Losses: If you lose, bet all previous losses x 2.</option>
+        <option value="4">MyStrat: I add this later.</option>
+      </select>
 
-          <div class="input-group mb-0">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1"
-                >Jackpot(s) = GrandPrize =:</span
-              >
-            </div>
-            <input
-              type="text"
-              disabled="disabled"
-              id="lottery-jackpot-count"
-              class="form-control"
-              placeholder=""
-              aria-describedby="basic-addon1"
-            />
-          </div>
 
-          <div class="input-group mb-0">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1"
-                >5 numbers = $1 Million =:</span
-              >
-            </div>
-            <input
-              type="text"
-              disabled="disabled"
-              id="lottery-5-count"
-              class="form-control"
-              placeholder=""
-              aria-describedby="basic-addon1"
-            />
-          </div>
 
-          <div class="input-group mb-0">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1"
-                >4* numbers = $50,000 =:</span
-              >
-            </div>
-            <input
-              type="text"
-              disabled="disabled"
-              id="lottery-4p-count"
-              class="form-control"
-              placeholder=""
-              aria-describedby="basic-addon1"
-            />
-          </div>
-
-          <div class="input-group mb-0">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1"
-                >4 numbers = $100 =:</span
-              >
-            </div>
-            <input
-              type="text"
-              disabled="disabled"
-              id="lottery-4-count"
-              class="form-control"
-              placeholder=""
-              aria-describedby="basic-addon1"
-            />
-          </div>
-
-          <div class="input-group mb-0">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1"
-                >3* numbers = $100 =:</span
-              >
-            </div>
-            <input
-              type="text"
-              disabled="disabled"
-              id="lottery-3p-count"
-              class="form-control"
-              placeholder=""
-              aria-describedby="basic-addon1"
-            />
-          </div>
-
-          <div class="input-group mb-0">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1"
-                >3 numbers = $7 =:</span
-              >
-            </div>
-            <input
-              type="text"
-              disabled="disabled"
-              id="lottery-3-count"
-              class="form-control"
-              placeholder=""
-              aria-describedby="basic-addon1"
-            />
-          </div>
-
-          <div class="input-group mb-0">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1"
-                >2* numbers = $7 =:</span
-              >
-            </div>
-            <input
-              type="text"
-              disabled="disabled"
-              id="lottery-2p-count"
-              class="form-control"
-              placeholder=""
-              aria-describedby="basic-addon1"
-            />
-          </div>
-
-          <div class="input-group mb-0">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1"
-                >1* number = $4 =:</span
-              >
-            </div>
-            <input
-              type="text"
-              disabled="disabled"
-              id="lottery-1p-count"
-              class="form-control"
-              placeholder=""
-              aria-describedby="basic-addon1"
-            />
-          </div>
-
-          <div class="input-group mb-0">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1"
-                >Powerball = $4 =:</span
-              >
-            </div>
-            <input
-              type="text"
-              disabled="disabled"
-              id="lottery-p-count"
-              class="form-control"
-              placeholder=""
-              aria-describedby="basic-addon1"
-            />
-          </div>
+      <div class="input-group mb-0">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">How many rolls?</span>
         </div>
-
-        <div class="monty-card mt-3" style="width: 100%">
-          <img
-            class="image monty-image card-img-top"
-            src="./images/goat.gif"
-            alt="MontyI"
-          />
-          <h5 id="monty" class="lottery-title">The Monty Hall Problem</h5>
-          <p class="lottery-text">
-            <span class="begin-par">The</span> Monty Hall Problem gets its name
-            from the TV game show, Let's Make A Deal, hosted by Monty Hall 1.
-            The scenario is such: you are given the opportunity to select one
-            closed door of three, behind one of which there is a prize. The
-            other two doors hide “goats” (or some other such “non-prize”), or
-            nothing at all. Once you have made your selection, Monty Hall will
-            open one of the remaining doors, revealing that it does not contain
-            the prize 2. He then asks you if you would like to switch your
-            selection to the other unopened door, or stay with your original
-            choice. Here is the problem:
-          </p>
-          <p class="monty-boom">Does it matter if you switch???</p>
-          <p class="lottery-text">
-            <span class="begin-par">This</span> problem is quite interesting,
-            because the answer is felt by most people — including mathematicians
-            — to be counter-intuitive. For most, the “solution” is immediately
-            obvious (they believe), and that is the end of it. But it's not.
-            Because most of the time, this “obvious” solution is incorrect. The
-            correct solution is quite counterintuitive. Further, I've found that
-            many persons have difficulty grasping the validity of the correct
-            solution even after several explanations. Thus, this web page.
-            Before I continue, you may wish to attempt to solve this problem by
-            yourself. You've a good chance to do so, because you now know not to
-            trust your instincts in this and that you should consider the
-            problem very carefully. Try it.
-          </p>
-          <button
-            type="button"
-            id="monty-solution"
-            class="btn btn-lg btn-danger"
-            data-toggle="popover"
-            title="Solution"
-            data-content=""
-          >
-            Click to reveal solution:
-          </button>
-
-          <div class="input-group mb-0">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1"
-                >How many goats would you like there to be? (There will be one
-                car in this sim)</span
-              >
-            </div>
-            <input
-              type="number"
-              id="goat-count"
-              class="form-control"
-              placeholder=""
-              aria-describedby="basic-addon1"
-            />
-          </div>
-
-          <div class="input-group mb-0">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1"
-                >How many times would you like to run this sim? (To get an
-                average):</span
-              >
-            </div>
-            <input
-              type="number"
-              id="goat-games-count"
-              class="form-control"
-              placeholder=""
-              aria-describedby="basic-addon1"
-            />
-            <button type="button" id="monty-button" class="btn btn-primary">
-              Run!
-            </button>
-          </div>
-
-          <div class="input-group mb-0">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1"
-                >Percent that switching wins:</span
-              >
-            </div>
-            <input
-              type="text"
-              disabled="disabled"
-              id="goat-result-count"
-              class="form-control"
-              placeholder=""
-              aria-describedby="basic-addon1"
-            />
-          </div>
-        </div>
+        <input type="number" id="matt-rolls" class="form-control" placeholder="" aria-describedby="basic-addon1" />
       </div>
+
+      <div class="input-group mb-0">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Minimum Bet?</span>
+        </div>
+        <input type="number" id="matt-min" class="form-control" placeholder="" aria-describedby="basic-addon1" />
+      </div>
+
+      <div class="input-group mb-0">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Maximum Bet?</span>
+        </div>
+        <input type="number" id="matt-max" class="form-control" placeholder="" aria-describedby="basic-addon1" />
+      </div>
+
+      <div class="input-group mb-0">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Starting Monies? [Set to 0 if you want to bypass
+            busting]</span>
+        </div>
+        <input type="number" id="matt-monies" class="form-control" placeholder="" aria-describedby="basic-addon1" />
+      </div>
+
+
+
+      <button type="button" id="matt-button" class="btn btn-primary">
+        Dow Bones Roll Me Dice!
+      </button>
     </div>
 
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.js"
-      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"
-    ></script>
-    <script src="app.js"></script>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  </body>
+    <div class="input-group mb-0">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">You got out with: </span>
+      </div>
+      <input type="text" disabled="disabled" id="monies-remain" class="form-control" placeholder=""
+        aria-describedby="basic-addon1" />
+    </div>
+
+  </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+</body>
+
 </html>
