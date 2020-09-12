@@ -286,90 +286,213 @@ $("#monty-button").click(function () {
 
 //MATT STARTS HERE
 $("#matt-button").click(function () {
+  let overGold = 0;
   let numRolls = $("#matt-rolls").val();
   let minBet = $("#matt-min").val();
   let maxBet = $("#matt-max").val();
-  let golds = $("#matt-monies").val();
+  let golds = parseInt($("#matt-monies").val());
   let lossBypass = false;
-  let currentRoll = 0;
+  let totalGold = 0;
+  let totalSpent = 0;
   let strat = $(".custom-select").val();
-  let lossGold = 0;
-  let gameOver = false;
-  let bet = parseInt(minBet);
-  let detailBet = 0;
-  let gold = parseInt(golds);
+  let totalGames = 0;
+  let wonGames = 0;
+  let sessions = parseInt($("#matt-sessions").val());
 
-  let details = "Starting at " + gold + "g ---";
-  if (gold == 0) {
+  let currentSession = 0;
+
+  let details = "\nStarting at " + golds + "g ---";
+  if (golds == 0) {
     lossBypass = true;
   }
 
+  if (maxBet == -1) {
+    maxBet = 200;
 
-  while (currentRoll < numRolls && gameOver == false) {
+    while (maxBet <= 5000) {
 
-    let rand = Math.floor(Math.random() * 100);
-    rand++;
+      currentSession = 0;
 
-    detailBet = bet;
-    //LOSE ON 1-61
-    if (rand < 61) {
+      while (currentSession < sessions) {
 
-      //ADD UP LOSS GOLD 
-      lossGold += bet;
-      gold -= bet;
 
-      if (strat == 1) {
-        bet = parseInt(minBet);
+        let gold = golds;
+        let gameOver = false;
+        let bet = parseInt(minBet);
+        let lossGold = 0;
+        let detailBet = 0;
+        let currentRoll = 0;
+
+        while (currentRoll < numRolls && gameOver == false) {
+
+          let rand = Math.floor(Math.random() * 100);
+          rand++;
+
+          totalSpent += bet;
+
+          detailBet = bet;
+          //LOSE ON 1-61
+          if (rand < 61) {
+
+            //ADD UP LOSS GOLD 
+            lossGold += bet;
+            gold -= bet;
+
+            if (strat == 1) {
+              bet = parseInt(minBet);
+            }
+            else if (strat == 2) {
+              bet = bet * 2;
+            } else if (strat == 3) {
+              bet = lossGold * 2;
+            } else if (strat == 4) {
+              bet = lossGold * 1.05;
+            }
+
+            //Current bet can't be more than max
+            if (bet > maxBet) {
+              bet = maxBet;
+            }
+
+            if (gold <= 0 && lossBypass != true) {
+              //WENT BUST; GAME OVER
+              bet = 0;
+              gameOver = true;
+            }
+          } else if (rand >= 61 && rand <= 94) {
+            gold += bet * 1;
+            bet = parseInt(minBet);
+            lossGold = 0;
+          } else if (rand >= 95 && rand <= 99) {
+            gold += bet * 2;
+            bet = parseInt(minBet);
+            lossGold = 0;
+          } else if (rand == 100) {
+            gold += bet * 3;
+            bet = parseInt(minBet);
+            lossGold = 0;
+          }
+
+          currentRoll++;
+
+        }
+
+        totalGold += gold;
+        totalGames++;
+        console.log(wonGames + "" + totalGames);
+        if (gold > 0) {
+          wonGames++;
+        }
+        if (gold > golds) {
+          overGold++;
+        }
+
+        currentSession++;
       }
-      else if (strat == 2) {
-        bet = bet * 2;
-      } else if (strat == 3) {
-        bet = lossGold * 2;
-      }
 
-      //Current bet can't be more than max
-      if (bet > maxBet) {
-        bet = maxBet;
-      }
+      details += ("\n" + maxBet + "g Max Bet @" + sessions + " sessions = " + ((wonGames / totalGames) * 100).toFixed(2) + "% win rate and a " + ((overGold / totalGames) * 100).toFixed(2) + "% to come out over your starting gold.");
+      console.log(details);
 
-      if (gold <= 0 && lossBypass != true) {
-        //WENT BUST; GAME OVER
-        bet = 0;
-        gameOver = true;
-        details += "\n BUSTED!"
-      }
-    } else if (rand >= 61 && rand <= 94) {
-      gold += bet * 2;
-      bet = parseInt(minBet);
-      lossGold = 0;
-    } else if (rand >= 95 && rand <= 99) {
-      gold += bet * 3;
-      bet = parseInt(minBet);
-      lossGold = 0;
-    } else if (rand == 100) {
-      gold += bet * 4;
-      bet = parseInt(minBet);
-      lossGold = 0;
+
+      totalGames = 0;
+      wonGames = 0;
+      overGold = 0;
+
+
+
+      maxBet += 200;
     }
 
+    $("#matt-solution").text(details);
 
-    details += ("\n Roll " + currentRoll + ": rolled a " + rand + " for " + detailBet + "g, now at " + gold + " gold.");
-    currentRoll++;
 
+
+
+
+    /**********IF INCREMENTAL IS NOT ON ********/
+  } else while (currentSession < sessions) {
+
+    let gold = golds;
+    let gameOver = false;
+    let bet = parseInt(minBet);
+    let lossGold = 0;
+    let detailBet = 0;
+    let currentRoll = 0;
+
+    while (currentRoll < numRolls && gameOver == false) {
+
+      let rand = Math.floor(Math.random() * 100);
+      rand++;
+
+      totalSpent += bet;
+
+      detailBet = bet;
+      //LOSE ON 1-61
+      if (rand < 61) {
+
+        //ADD UP LOSS GOLD 
+        lossGold += bet;
+        gold -= bet;
+
+        if (strat == 1) {
+          bet = parseInt(minBet);
+        }
+        else if (strat == 2) {
+          bet = bet * 2;
+        } else if (strat == 3) {
+          bet = lossGold * 2;
+        } else if (strat == 4) {
+          bet = lossGold * 1.05;
+        }
+
+        //Current bet can't be more than max
+        if (bet > maxBet) {
+          bet = maxBet;
+        }
+
+        if (gold <= 0 && lossBypass != true) {
+          //WENT BUST; GAME OVER
+          bet = 0;
+          gameOver = true;
+          details += "\n BUSTED!"
+        }
+      } else if (rand >= 61 && rand <= 94) {
+        gold += bet * 1;
+        bet = parseInt(minBet);
+        lossGold = 0;
+      } else if (rand >= 95 && rand <= 99) {
+        gold += bet * 2;
+        bet = parseInt(minBet);
+        lossGold = 0;
+      } else if (rand == 100) {
+        gold += bet * 3;
+        bet = parseInt(minBet);
+        lossGold = 0;
+      }
+
+
+      details += ("\n Roll " + currentRoll + ": rolled a " + rand + " for " + parseInt(detailBet).toFixed(2) + "g, now at " + gold.toFixed(2) + " gold.");
+      currentRoll++;
+
+    }
+
+    totalGold += gold;
+    totalGames++;
+    if (gold > 0) {
+      wonGames++;
+    }
+
+    if (gold > golds) {
+      overGold++;
+    }
+    $("#matt-solution").text(details);
+
+    currentSession++;
   }
 
-  $(function () {
-    $("#matt-solution").popover({
-      container: "body",
-      offset: -100,
-      content:
-        details
-    });
-  });
-
-
-
+  $("#monies-average").val("\n" + maxBet + "g Max Bet @" + sessions + " sessions = " + ((wonGames / totalGames) * 100).toFixed(2) + "% win rate and a " + ((overGold / totalGames) * 100).toFixed(2) + "% to come out over your starting gold.");
   console.log(details);
-  $("#monies-remain").val(gold + " gold.")
+  console.log("\n" + maxBet + "g Max Bet = " + ((wonGames / totalGames) * 100).toFixed(2) + "% win rate and a " + ((overGold / totalGames) * 100).toFixed(2) + "% to come out over your starting gold.");
 
-});
+  $("#monies-remain").val(totalGold.toFixed(2) + "g after " + sessions + " total sessions of " + numRolls + " max rolls@ " + minBet + "g each.");
+}); 

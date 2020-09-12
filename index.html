@@ -283,11 +283,7 @@
           class="green-font">win 2x</span>; 95-99 and you <span class="green-font">win 3x</span>; roll 100 and you <span
           class="green-font">win 4x</span> your bet.
 
-      </p>
-      <button type="button" id="matt-solution" class="btn btn-lg btn-danger" data-toggle="popover" title="Results:"
-        data-content="">
-        Click to reveal last session's results:
-      </button>
+
 
       <select class="custom-select">
         <option selected>Choose your betting strategy:</option>
@@ -298,6 +294,13 @@
       </select>
 
 
+
+      <div class="input-group mb-0">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">How many sessions of rolls?</span>
+        </div>
+        <input type="number" id="matt-sessions" class="form-control" placeholder="" aria-describedby="basic-addon1" />
+      </div>
 
       <div class="input-group mb-0">
         <div class="input-group-prepend">
@@ -315,7 +318,7 @@
 
       <div class="input-group mb-0">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">Maximum Bet?</span>
+          <span class="input-group-text" id="basic-addon1">Maximum Bet? [-1 if you want to do incremental max bets win%]</span>
         </div>
         <input type="number" id="matt-max" class="form-control" placeholder="" aria-describedby="basic-addon1" />
       </div>
@@ -335,11 +338,21 @@
       </button>
     </div>
 
+    <div class="overflow-auto" id="matt-solution"></div>
+
     <div class="input-group mb-0">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">You got out with: </span>
+        <span class="input-group-text" id="basic-addon1">You now have: </span>
       </div>
       <input type="text" disabled="disabled" id="monies-remain" class="form-control" placeholder=""
+        aria-describedby="basic-addon1" />
+    </div>
+
+    <div class="input-group mb-0">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Your average: </span>
+      </div>
+      <input type="text" disabled="disabled" id="monies-average" class="form-control" placeholder=""
         aria-describedby="basic-addon1" />
     </div>
 
